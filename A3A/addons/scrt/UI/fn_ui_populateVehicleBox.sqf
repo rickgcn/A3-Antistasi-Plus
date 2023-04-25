@@ -37,7 +37,11 @@ if (tierWar > 3) then {
 		A3A_faction_reb get "vehicleAT", 
 		A3A_faction_reb get "vehicleAA", 
 		A3A_faction_reb get "staticAT", 
-		A3A_faction_reb get "staticAA"
+		A3A_faction_reb get "staticAA", 
+		A3A_faction_reb get "vehicleIFV", // by rickgcn
+		A3A_faction_reb get "vehicleTank", // by rickgcn
+		A3A_faction_reb get "vehicleAttackHeliB", // by rickgcn
+		A3A_faction_reb get "vehicleAttackHeliO" // by rickgcn
 	] select {_x isNotEqualTo ""};
 	_militaryVehicles append _availableVehs;
 };

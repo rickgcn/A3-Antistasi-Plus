@@ -594,8 +594,10 @@ server setVariable [FactionGet(reb,"staticAA"),1500,true];
 server setVariable [FactionGet(reb,"staticAT"),1250,true];
 server setVariable [FactionGet(reb,"staticMortar"),2000,true];
 
-server setVariable [FactionGet(reb,"vehicleIFV"),7500,true];
-server setVariable [FactionGet(reb,"vehicleTank"),15000,true];
+server setVariable [FactionGet(reb,"vehicleIFV"),7500,true]; // by rickgcn
+server setVariable [FactionGet(reb,"vehicleTank"),15000,true]; // by rickgcn
+server setVariable [FactionGet(reb,"vehicleAttackHeliB"),5000,true]; // by rickgcn
+server setVariable [FactionGet(reb,"vehicleAttackHeliO"),5000,true]; // by rickgcn
 
 //black market costs
 {server setVariable [_x select 0, _x select 1, true]} forEach (FactionGet(reb,"blackMarketStock"));
