@@ -53,7 +53,7 @@ if (!canMove paradropPlane || {!alive paradropPlane || {!alive (driver paradropP
     [localize "STR_A3AP_paradrop_header", localize "STR_A3AP_paradrop_abort_plane_noncapable"] call SCRT_fnc_misc_deniedHint;
 };
 
-private _totalSeats = [A3A_faction_reb get "vehiclePlane", true] call BIS_fnc_crewCount;
+private _totalSeats = [A3A_faction_reb get "vehiclePlaneParadrop", true] call BIS_fnc_crewCount; // Total seat is the correct plane
 private _occupiedSeats = count (crew paradropPlane);
 
 if ((_totalSeats - _occupiedSeats) < 0) exitWith {
