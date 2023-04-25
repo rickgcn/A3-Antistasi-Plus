@@ -47,10 +47,12 @@ if (tierWar > 3) then {
 };
 
 if (tierWar > 4) then {
-	private _mortar = A3A_faction_reb get "staticMortar";
-	if (_mortar isNotEqualTo "") then {
-		_militaryVehicles pushBack _mortar;
-	};
+	private _availableVehs = [
+		A3A_faction_reb get "staticRadar", 
+		A3A_faction_reb get "staticSAM", 
+		A3A_faction_reb get "staticMortar"
+	] select {_x isNotEqualTo ""};
+	_militaryVehicles append _availableVehs;
 };
 
 if ({sidesX getVariable [_x,sideUnknown] isEqualTo teamPlayer} count factories > 4) then {

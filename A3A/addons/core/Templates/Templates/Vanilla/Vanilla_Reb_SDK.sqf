@@ -44,6 +44,8 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 ["staticMortar", "I_Mortar_01_F"] call _fnc_saveToTemplate;
 ["staticMortarMagHE", "8Rnd_82mm_Mo_shells"] call _fnc_saveToTemplate;
 ["staticMortarMagSmoke", "8Rnd_82mm_Mo_Smoke_white"] call _fnc_saveToTemplate;
+["staticRadar", "B_Radar_System_01_F"] call _fnc_saveToTemplate;
+["staticSAM", "B_SAM_System_03_F"] call _fnc_saveToTemplate;
 
 ["minesAT", ["ATMine_Range_Mag", "SLAMDirectionalMine_Wire_Mag"]] call _fnc_saveToTemplate;
 ["minesAPERS", ["ClaymoreDirectionalMine_Remote_Mag","APERSMine_Range_Mag", "APERSBoundingMine_Range_Mag", "APERSTripMine_Wire_Mag"]] call _fnc_saveToTemplate;
