@@ -13,18 +13,23 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 ["flagTexture", "\A3\Data_F_Exp\Flags\flag_SYND_CO.paa"] call _fnc_saveToTemplate;
 ["flagMarkerType", "flag_Syndicat"] call _fnc_saveToTemplate;
 
-["vehicleBasic", "I_G_Quadbike_01_F"] call _fnc_saveToTemplate;
-["vehicleLightUnarmed", "I_G_Offroad_01_F"] call _fnc_saveToTemplate;
-["vehicleLightArmed", "I_G_Offroad_01_armed_F"] call _fnc_saveToTemplate;
-["vehicleTruck", "I_G_Van_01_transport_F"] call _fnc_saveToTemplate;
-["vehicleAT", "I_G_Offroad_01_AT_F"] call _fnc_saveToTemplate;
-private _vehicleAA = "";
+["vehicleBasic", "I_Quadbike_01_F"] call _fnc_saveToTemplate;
+["vehicleLightUnarmed", "I_MRAP_03_F"] call _fnc_saveToTemplate;
+["vehicleLightArmed", "I_MRAP_03_hmg_F"] call _fnc_saveToTemplate;
+["vehicleTruck", "I_Truck_02_transport_F"] call _fnc_saveToTemplate;
+["vehicleAT", "I_LT_01_AT_F"] call _fnc_saveToTemplate;
+["vehicleAA", "I_LT_01_AA_F"] call _fnc_saveToTemplate;
+["vehicleIFV", "I_APC_Wheeled_03_cannon_F"] call _fnc_saveToTemplate;
+["vehicleTank", "I_MBT_03_cannon_F"] call _fnc_saveToTemplate;
 
-["vehicleBoat", "I_C_Boat_Transport_02_F"] call _fnc_saveToTemplate;
-["vehicleRepair", "I_G_Offroad_01_repair_F"] call _fnc_saveToTemplate;
+["vehicleBoat", "I_Boat_Armed_01_minigun_F"] call _fnc_saveToTemplate;
+["vehicleRepair", "I_Truck_02_box_F"] call _fnc_saveToTemplate;
 
-["vehiclePlane", "I_C_Plane_Civil_01_F"] call _fnc_saveToTemplate;
-["vehiclePayloadPlane", "I_C_Plane_Civil_01_F"] call _fnc_saveToTemplate;
+["vehiclePlane", "I_Plane_Fighter_03_dynamicLoadout_F"] call _fnc_saveToTemplate;
+["vehiclePayloadPlane", "B_T_VTOL_01_infantry_F"] call _fnc_saveToTemplate;
+["vehicleAttackHeliB", "B_Heli_Attack_01_dynamicLoadout_F"] call _fnc_saveToTemplate; // by rickgcn
+["vehicleAttackHeliO", "O_Heli_Attack_02_dynamicLoadout_black_F"] call _fnc_saveToTemplate; // by rickgcn
+["vehiclePlaneParaDrop", "B_T_VTOL_01_infantry_F"] call _fnc_saveToTemplate; // by rickgcn
 
 ["vehicleCivCar", "C_Offroad_01_F"] call _fnc_saveToTemplate;
 ["vehicleCivTruck", "C_Truck_02_transport_F"] call _fnc_saveToTemplate;
@@ -33,10 +38,10 @@ private _vehicleAA = "";
 ["vehicleCivBoxSupply", "C_Van_01_box_F"] call _fnc_saveToTemplate;
 
 
-["staticMG", "I_G_HMG_02_high_F"] call _fnc_saveToTemplate;
+["staticMG", "I_HMG_01_high_F"] call _fnc_saveToTemplate;
 ["staticAT", "I_static_AT_F"] call _fnc_saveToTemplate;
-private _staticAA = "I_static_AA_F";
-["staticMortar", "I_G_Mortar_01_F"] call _fnc_saveToTemplate;
+["staticAA", "I_static_AA_F"] call _fnc_saveToTemplate;
+["staticMortar", "I_Mortar_01_F"] call _fnc_saveToTemplate;
 ["staticMortarMagHE", "8Rnd_82mm_Mo_shells"] call _fnc_saveToTemplate;
 ["staticMortarMagSmoke", "8Rnd_82mm_Mo_Smoke_white"] call _fnc_saveToTemplate;
 
@@ -46,12 +51,12 @@ private _staticAA = "I_static_AA_F";
 ["breachingExplosivesAPC", [["DemoCharge_Remote_Mag", 1]]] call _fnc_saveToTemplate;
 ["breachingExplosivesTank", [["SatchelCharge_Remote_Mag", 1], ["DemoCharge_Remote_Mag", 2]]] call _fnc_saveToTemplate;
 
-if (_hasWs) then {
-  _vehicleAA = "I_Tura_Truck_02_aa_lxWS";
-  _staticAA = "I_Tura_ZU23_lxWS";
-};
-["vehicleAA", _vehicleAA] call _fnc_saveToTemplate;
-["staticAA", _staticAA] call _fnc_saveToTemplate;
+// if (_hasWs) then {
+//   _vehicleAA = "I_Tura_Truck_02_aa_lxWS";
+//   _staticAA = "I_Tura_ZU23_lxWS";
+// };
+// ["vehicleAA", _vehicleAA] call _fnc_saveToTemplate;
+// ["staticAA", _staticAA] call _fnc_saveToTemplate;
 
 //////////////////////////////////////
 //       Antistasi Plus Stuff       //
@@ -99,15 +104,182 @@ private _vehiclesBlackMarket = _shopWs + _shopApex + [
 ///////////////////////////
 
 private _initialRebelEquipment = [
-    "hgun_Pistol_heavy_02_F",
-    "hgun_PDW2000_F",
-    "30Rnd_9x21_Mag", "30Rnd_9x21_Red_Mag",
-    "6Rnd_45ACP_Cylinder","MiniGrenade","SmokeShell",
-    ["IEDUrbanSmall_Remote_Mag", 10], ["IEDLandSmall_Remote_Mag", 10], ["IEDUrbanBig_Remote_Mag", 3], ["IEDLandBig_Remote_Mag", 3],
-    "B_FieldPack_oli","B_FieldPack_blk","B_FieldPack_khk",
-    "V_TacChestrig_grn_F","V_TacChestrig_oli_F","V_TacChestrig_cbr_F",
-    "Binocular",
-    "acc_flashlight","acc_flashlight_smg_01","acc_flashlight_pistol"
+// INDEP Initial Equipment
+// Helmets
+"H_HelmetCrew_I",
+"H_PilotHelmetFighter_I",
+"H_PilotHelmetHeli_I",
+"H_CrewHelmetHeli_I",
+"H_HelmetIA",
+"H_HelmetIA_net",
+"H_HelmetIA_camo",
+// Vests
+"V_RebreatherIA",
+"V_Chestrig_oli",
+"V_BandollierB_oli",
+"V_TacVest_oli",
+"V_PlateCarrierIA1_dgtl",
+"V_PlateCarrierIA2_dgtl",
+"V_PlateCarrierIAGL_dgtl",
+// Rifles
+"arifle_Mk20_F",
+"arifle_Mk20C_F",
+"arifle_Mk20_GL_F",
+"arifle_SDAR_F",
+// Rifle Magazines
+"30Rnd_556x45_Stanag",
+"30Rnd_556x45_Stanag_Tracer_Red",
+"30Rnd_556x45_Stanag_Tracer_Green",
+"30Rnd_556x45_Stanag_Tracer_Yellow",
+"30Rnd_556x45_Stanag_red",
+"30Rnd_556x45_Stanag_green",
+"20Rnd_556x45_UW_mag",
+// Sniper Rifles
+"srifle_EBR_F",
+"srifle_GM6_F",
+// Sniper Rifle Magazines
+"20Rnd_762x51_Mag",
+"5Rnd_127x108_Mag",
+"5Rnd_127x108_APDS_Mag",
+// MachineGuns
+"LMG_Mk200_F",
+// MachineGun Magazines
+"200Rnd_65x39_cased_Box",
+"200Rnd_65x39_cased_Box_Tracer",
+"200Rnd_65x39_cased_Box_Red",
+"200Rnd_65x39_cased_Box_Tracer_Red",
+// SMGs
+"hgun_PDW2000_F",
+// SMG Magazines
+"30Rnd_9x21_Mag",
+"30Rnd_9x21_Red_Mag",
+"30Rnd_9x21_Yellow_Mag",
+"30Rnd_9x21_Green_Mag",
+"16Rnd_9x21_Mag",
+"16Rnd_9x21_red_Mag",
+"16Rnd_9x21_green_Mag",
+"16Rnd_9x21_yellow_Mag",
+// Handguns
+"hgun_ACPC2_F",
+// Handgun Magazines
+"9Rnd_45ACP_Mag",
+// Launchers
+"launch_NLAW_F",
+"launch_I_Titan_F",
+"launch_I_Titan_short_F",
+"launch_MRAWS_olive_rail_F",
+// Launcher Magazines
+"NLAW_F",
+"Titan_AA",
+"Titan_AT",
+"Titan_AP",
+"MRAWS_HEAT_F",
+"MRAWS_HE_F",
+"MRAWS_HEAT55_F",
+// UGL Grenades
+"1Rnd_HE_Grenade_shell",
+"UGL_FlareWhite_F",
+"UGL_FlareGreen_F",
+"UGL_FlareRed_F",
+"UGL_FlareYellow_F",
+"UGL_FlareCIR_F",
+"1Rnd_Smoke_Grenade_shell",
+"1Rnd_SmokeRed_Grenade_shell",
+"1Rnd_SmokeGreen_Grenade_shell",
+"1Rnd_SmokeYellow_Grenade_shell",
+"1Rnd_SmokePurple_Grenade_shell",
+"1Rnd_SmokeBlue_Grenade_shell",
+"1Rnd_SmokeOrange_Grenade_shell",
+// Hand Grenades
+"HandGrenade",
+"MiniGrenade",
+"SmokeShell",
+"SmokeShellYellow",
+"SmokeShellGreen",
+"SmokeShellRed",
+"SmokeShellPurple",
+"SmokeShellOrange",
+"SmokeShellBlue",
+"Chemlight_green",
+"Chemlight_red",
+"Chemlight_yellow",
+"Chemlight_blue",
+// Explosives
+"DemoCharge_Remote_Mag",
+"SatchelCharge_Remote_Mag",
+"ATMine_Range_Mag",
+"ClaymoreDirectionalMine_Remote_Mag",
+"APERSMine_Range_Mag",
+"APERSBoundingMine_Range_Mag",
+"SLAMDirectionalMine_Wire_Mag",
+"APERSTripMine_Wire_Mag",
+"APERSMineDispenser_Mag",
+"TrainingMine_Mag",
+// Weapon Accessories
+"acc_pointer_IR",
+"optic_ACO_grn",
+"optic_Holosight",
+"optic_Holosight_smg",
+"optic_MRCO",
+"optic_SOS",
+"optic_LRPS",
+"optic_NVS",
+"optic_tws",
+"optic_tws_mg",
+"muzzle_snds_L",
+"muzzle_snds_M",
+"muzzle_snds_B",
+"muzzle_snds_H_MG",
+"muzzle_snds_acp",
+"bipod_03_F_blk",
+"bipod_03_F_oli",
+// Items
+"FirstAidKit",
+"Medikit",
+"ToolKit",
+"ItemGPS",
+"I_UavTerminal",
+"ItemRadio",
+"MineDetector",
+"Binocular",
+"Rangefinder",
+"Laserdesignator_03",
+"Laserbatteries",
+"NVGoggles_INDEP",
+"G_Combat",
+"G_I_Diving",
+"G_Tactical_Clear",
+"G_Tactical_Black",
+// Backpacks
+"B_FieldPack_oli",
+"B_Carryall_oli",
+"B_AssaultPack_dgtl",
+"B_TacticalPack_oli",
+"B_Bergen_dgtl_F",
+"I_UAV_06_backpack_F",
+"I_UAV_06_medical_backpack_F",
+"I_UAV_01_backpack_F",
+"I_UGV_02_Science_backpack_F",
+"I_UGV_02_Demining_backpack_F",
+"I_Mortar_01_support_F",
+"I_Mortar_01_weapon_F",
+"I_HMG_01_support_F",
+"I_HMG_01_support_high_F",
+"I_HMG_01_weapon_F",
+"I_HMG_01_A_weapon_F",
+"I_HMG_01_high_weapon_F",
+"I_HMG_02_support_F",
+"I_HMG_02_support_high_F",
+"I_HMG_02_weapon_F",
+"I_HMG_02_high_weapon_F",
+"I_GMG_01_weapon_F",
+"I_GMG_01_A_weapon_F",
+"I_GMG_01_high_weapon_F",
+"B_RadioBag_01_digi_F",
+"I_AA_01_weapon_F",
+"I_AT_01_weapon_F",
+// Self Revive Kit
+"A3AP_SelfReviveKit"
 ];
 
 if (_hasLawsOfWar) then {
@@ -137,25 +309,25 @@ if (_hasLawsOfWar) then {
 
 _initialRebelEquipment append _civilianBackpacks;
 
-if (_hasContact) then {
-    _initialRebelEquipment append [
-        "sgun_HunterShotgun_01_F",
-        "sgun_HunterShotgun_01_sawedoff_F",
-        "2Rnd_12Gauge_Pellets",
-        "2Rnd_12Gauge_Slug"
-    ];
-};
+// if (_hasContact) then {
+//     _initialRebelEquipment append [
+//         "sgun_HunterShotgun_01_F",
+//         "sgun_HunterShotgun_01_sawedoff_F",
+//         "2Rnd_12Gauge_Pellets",
+//         "2Rnd_12Gauge_Slug"
+//     ];
+// };
 
-if (_hasApex) then {
-    _initialRebelEquipment append [
-        "hgun_Pistol_01_F",
-        "10Rnd_9x21_Mag",
-        ["launch_RPG7_F", 3], 
-        ["RPG7_F", 9]
-    ];
-} else {
-    _initialRebelEquipment append [["launch_RPG32_F", 2], ["RPG32_F", 6]];
-};
+// if (_hasApex) then {
+//     _initialRebelEquipment append [
+//         "hgun_Pistol_01_F",
+//         "10Rnd_9x21_Mag",
+//         ["launch_RPG7_F", 3], 
+//         ["RPG7_F", 9]
+//     ];
+// } else {
+//     _initialRebelEquipment append [["launch_RPG32_F", 2], ["RPG32_F", 6]];
+// };
 
 if (A3A_hasTFAR) then {_initialRebelEquipment append ["tf_microdagr","tf_anprc154"]};
 if (A3A_hasTFAR && startWithLongRangeRadio) then {_initialRebelEquipment append ["tf_anprc155","tf_anprc155_coyote"]};
@@ -164,24 +336,34 @@ if (A3A_hasTFARBeta && startWithLongRangeRadio) then {_initialRebelEquipment app
 ["initialRebelEquipment", _initialRebelEquipment] call _fnc_saveToTemplate;
 
 private _rebUniforms = [
-    "U_I_C_Soldier_Para_1_F",
-    "U_I_C_Soldier_Para_4_F",
-    "U_I_C_Soldier_Para_5_F",
-    "U_I_C_Soldier_Para_3_F",
-    "U_I_C_Soldier_Para_2_F",
-    "U_I_C_Soldier_Camo_F",
-    "U_IG_Guerilla2_2",
-    "U_IG_Guerilla2_3"
+    "U_I_CombatUniform",
+	"U_I_CombatUniform_tshirt",
+	"U_I_CombatUniform_shortsleeve",
+	"U_I_pilotCoveralls",
+	"U_I_HeliPilotCoveralls",
+	"U_I_GhillieSuit",
+	"U_I_OfficerUniform",
+	"U_I_Wetsuit",
+	"U_I_FullGhillie_lsh",
+	"U_I_FullGhillie_sard",
+	"U_I_FullGhillie_ard",
+	"U_I_CBRN_Suit_01_AAF_F",
+	"U_Tank_green_F"
 ];
 
 ["uniforms", _rebUniforms] call _fnc_saveToTemplate;
 
 ["headgear", [
-    "H_Cap_oli",
-    "H_Cap_grn",
-    "H_Booniehat_oli",
-    "H_Bandanna_sgg",
-    "H_Bandanna_khk"
+    "H_Booniehat_dgtl",
+	"H_Cap_blk_Raven",
+	"H_MilCap_dgtl",
+	"H_HelmetCrew_I",
+	"H_PilotHelmetFighter_I",
+	"H_PilotHelmetHeli_I",
+	"H_CrewHelmetHeli_I",
+	"H_HelmetIA",
+	"H_HelmetIA_net",
+	"H_HelmetIA_camo"
 ]] call _fnc_saveToTemplate;
 
 /////////////////////

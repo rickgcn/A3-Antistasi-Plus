@@ -52,14 +52,28 @@ if (_typeGroup isEqualType []) then {
 	if (_withBackpck == "Mortar") then {_costs = _costs + ([FactionGet(reb,"staticMortar")] call A3A_fnc_vehiclePrice)};
 	_isInfantry = true;
 
-} else {
+} else { // modified by rickgcn, to make tank crew to 3 members, fighter crew to 1 members
     private _typeCrew = FactionGet(reb,"unitCrew");
-	_costs = 2*(server getVariable _typeCrew) + ([_typeGroup] call A3A_fnc_vehiclePrice);
-	if (_typeGroup == FactionGet(reb,"staticAA")) then { _costs = _costs + ([FactionGet(reb,"vehicleTruck")] call A3A_fnc_vehiclePrice) };
-    _formatX = [_typeCrew, _typeCrew];
-	_costHR = 2;
+    switch (true) do {
+        case (_typeGroup isEqualTo FactionGet(reb,"vehicleTank")): {
+            _costs = (3*(server getVariable _typeCrew)) + ([FactionGet(reb,"vehicleTank")] call A3A_fnc_vehiclePrice);
+            _formatX = [_typeCrew, _typeCrew, _typeCrew];
+            _costHR = 3;
+        };
+        case (_typeGroup isEqualTo FactionGet(reb,"vehiclePlane")): {
+            _costs = (1*(server getVariable _typeCrew)) + ([FactionGet(reb,"vehiclePlane")] call A3A_fnc_vehiclePrice);
+            _formatX = [_typeCrew];
+            _costHR = 1;
+        };
+        default {
+            _costs = 2*(server getVariable _typeCrew) + ([_typeGroup] call A3A_fnc_vehiclePrice);
+            if (_typeGroup == FactionGet(reb,"staticAA")) then { _costs = _costs + ([FactionGet(reb,"vehicleTruck")] call A3A_fnc_vehiclePrice) };
+            _formatX = [_typeCrew, _typeCrew];
+            _costHR = 2;
 
-	if ((_typeGroup == FactionGet(reb,"staticMortar")) or (_typeGroup == FactionGet(reb,"staticMG"))) exitWith { _isInfantry = true };
+            if ((_typeGroup == FactionGet(reb,"staticMortar")) or (_typeGroup == FactionGet(reb,"staticMG"))) exitWith { _isInfantry = true };
+        };
+    };
 };
 
 if (_hr < _costHR) then {_exit = true; [localize "STR_A3A_reinf_addFIASquadHC_header", format [localize "STR_A3A_reinf_addFIASquadHC_error_not_enough_hr",_costHR]] call SCRT_fnc_misc_deniedHint;};
@@ -76,6 +90,7 @@ private _vehType = switch true do {
     };
     case (!_isInfantry): {_typeGroup};
     case (count _formatX isEqualTo 2): {FactionGet(reb,"vehicleBasic")};
+    case (_typeGroup isEqualTo FactionGet(reb,"groupSquadMech")): {FactionGet(reb,"vehicleIFV")}; // by rickgcn
     case (count _formatX > 4): {FactionGet(reb,"vehicleTruck")};
     default {FactionGet(reb,"vehicleLightUnarmed")};
 };
@@ -85,11 +100,17 @@ private _idFormat = switch _typeGroup do {
     case FactionGet(reb,"groupSniper"): {"Snpr-"};
     case FactionGet(reb,"groupSentry"): {"Stry-"};
     case FactionGet(reb,"groupCrew"): {"Crew-"};
+    case FactionGet(reb,"groupSquadMech"): {"Mech-"}; // by rickgcn
     case FactionGet(reb,"staticMortar"): {"Mort-"};
     case FactionGet(reb,"staticMG"): {"MG-"};
     case FactionGet(reb,"vehicleAT"): {"M.AT-"};
     case FactionGet(reb,"vehicleLightArmed"): {"M.MG-"};
+    case FactionGet(reb,"vehicleTank"): {"Tank-"}; // by rickgcn
     case FactionGet(reb,"staticAA"): {"M.AA-"};
+    case FactionGet(reb,"vehicleAttackHeliB"): {"Heli-"}; // by rickgcn
+    case FactionGet(reb,"vehicleAttackHeliO"): {"Heli-"}; // by rickgcn
+    case FactionGet(reb,"vehiclePlane"): {"CAS-"}; // by rickgcn
+    case FactionGet(reb,"vehiclePlaneFighter"): {"ASF-"}; // by rickgcn
     default {
         switch _withBackpck do {
             case "MG": {"SqMG-"};
@@ -98,10 +119,12 @@ private _idFormat = switch _typeGroup do {
         };
     };
 };
-private _special = if (_isInfantry) then {
+private _special = if (_isInfantry) then { // by rickgcn, added special classes named "MechSquad" and "Tank"
+    if (_typeGroup isEqualTo FactionGet(reb,"groupSquadMech")) exitWith {"MechSquad"};
     if (_typeGroup isEqualType []) then { _withBackpck } else {"staticAutoT"};
 } else {
     if (_mounts isNotEqualTo []) exitWith {"BuildAA"};
+    if (_typeGroup isEqualTo FactionGet(reb,"vehicleTank")) exitWith {"Tank"};
     "VehicleSquad"
 };
 
@@ -130,6 +153,9 @@ if (_isInfantry and (_costs + _vehCost) > server getVariable "resourcesFIA") exi
     [localize "STR_A3A_reinf_addFIASquadHC_header", format [localize "STR_A3A_reinf_addFIASquadHC_error_not_enough_money_barefoot",_vehCost, A3A_faction_civ get "currencySymbol"]] call A3A_fnc_customHint;
     [_formatX, _idFormat, _special, objNull] spawn A3A_fnc_spawnHCGroup;
 };
+
+// by rickgcn, runs when recruit mech squads
+if (_typeGroup isEqualTo FactionGet(reb,"groupSquadMech")) exitWith {[_vehType, "HCSquadVehicle", [_formatX, _idFormat, _special], _mounts] call _vehiclePlacementMethod;};
 
 #ifdef UseDoomGUI
     ERROR("Disabled due to UseDoomGUI Switch.")

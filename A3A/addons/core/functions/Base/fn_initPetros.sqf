@@ -17,6 +17,50 @@ petros addVest _vest;
 [petros, "Rifles"] call A3A_fnc_randomRifle;
 petros selectWeapon (primaryWeapon petros);
 
+// by rickgcn, re-setting petros's loadouts
+comment "Remove existing items";
+removeAllWeapons petros;
+removeAllItems petros;
+removeAllAssignedItems petros;
+removeUniform petros;
+removeVest petros;
+removeBackpack petros;
+removeHeadgear petros;
+removeGoggles petros;
+
+comment "Add weapons";
+petros addWeapon "arifle_SPAR_01_blk_F";
+petros addPrimaryWeaponItem "acc_pointer_IR";
+petros addPrimaryWeaponItem "optic_ERCO_blk_F";
+petros addPrimaryWeaponItem "30Rnd_556x45_Stanag";
+petros addWeapon "hgun_P07_khk_F";
+petros addHandgunItem "16Rnd_9x21_Mag";
+
+comment "Add containers";
+petros forceAddUniform "U_B_CTRG_Soldier_3_F";
+petros addVest "V_PlateCarrier2_rgr_noflag_F";
+
+comment "Add items to containers";
+petros addItemToUniform "FirstAidKit";
+for "_i" from 1 to 4 do {petros addItemToUniform "30Rnd_556x45_Stanag";};
+petros addItemToVest "30Rnd_556x45_Stanag";
+for "_i" from 1 to 2 do {petros addItemToVest "16Rnd_9x21_Mag";};
+for "_i" from 1 to 2 do {petros addItemToVest "HandGrenade";};
+petros addItemToVest "SmokeShell";
+petros addItemToVest "SmokeShellGreen";
+for "_i" from 1 to 2 do {petros addItemToVest "Chemlight_green";};
+petros addGoggles "G_Tactical_Black";
+
+comment "Add items";
+petros linkItem "ItemMap";
+petros linkItem "ItemCompass";
+petros linkItem "ItemWatch";
+petros linkItem "ItemRadio";
+petros linkItem "ItemGPS";
+
+comment "Set identity";
+[petros,"Miller","male03engb"] call BIS_fnc_setIdentity;
+
 if (petros == leader group petros) then {
 	group petros setGroupIdGlobal ["Petros","GroupColor4"];
 	petros disableAI "MOVE";

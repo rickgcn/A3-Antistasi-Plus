@@ -779,6 +779,19 @@ class squadRecruit: SimpleMenuBigger
 {
 	idd = 100;
 
+	class ControlsBackground
+	{
+		class background: BOX
+		{
+			idc = -1;
+			text = "";
+			x = 0.244979 * safezoneW + safezoneX;
+			y = 0.223941 * safezoneH + safezoneY;
+			w = 0.445038 * safezoneW;
+			h = 0.6731155 * safezoneH; // 0.7711155
+		};
+	};
+
 	class Controls
 	{
 		class closeButton: ScrtRscCloseButton
@@ -842,6 +855,15 @@ class squadRecruit: SimpleMenuBigger
 			action = "closeDialog 0; [A3A_faction_reb get 'groupCrew'] spawn A3A_fnc_addFIAsquadHC";
 		};
 		
+		class l6Button: SimpleButton // by rickgcn
+		{
+			idc = 114;
+			text = $STR_antistasi_dialogs_mech_team_title;
+			x = 0.257187 * safezoneW + safezoneX;
+			y = 0.78 * safezoneH + safezoneY;
+			action = "closeDialog 0; [A3A_faction_reb get 'groupSquadMech'] spawn A3A_fnc_addFIAsquadHC";
+		};
+
 		class r1Button: SimpleButton
 		{
 			idc = 105;
@@ -884,6 +906,15 @@ class squadRecruit: SimpleMenuBigger
 			x = 0.477 * safezoneW + safezoneX;
 			y = 0.682 * safezoneH + safezoneY;
 			action = "closeDialog 0;[A3A_faction_reb get 'vehicleLightArmed'] spawn A3A_fnc_addFIAsquadHC";
+		};
+
+		class r6Button: SimpleButton // by rickgcn
+		{
+			idc = 115;
+			text = $STR_antistasi_dialogs_tank_title;
+			x = 0.477 * safezoneW + safezoneX;
+			y = 0.78 * safezoneH + safezoneY;
+			action = "closeDialog 0;[A3A_faction_reb get 'vehicleTank'] spawn A3A_fnc_addFIAsquadHC";
 		};
 	};
 };

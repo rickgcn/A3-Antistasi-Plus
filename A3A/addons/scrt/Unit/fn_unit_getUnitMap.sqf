@@ -156,21 +156,21 @@ private _unitClassMap = switch (_side) do {
 	};
 	case independent: {
 		createHashMapFromArray [
-			["militia_Unarmed", "I_G_Survivor_F"],
-			["militia_Rifleman", "I_G_Soldier_F"],
-			["militia_staticCrew", "I_G_Soldier_F"],
-			["militia_Medic", "I_G_medic_F"],
-			["militia_Sniper", "I_G_Sharpshooter_F"],
-			["militia_Marksman", "I_G_Soldier_M_F"],
-			["militia_LAT", "I_G_Soldier_LAT_F"],
-			["militia_MachineGunner", "I_G_Soldier_AR_F"],
-			["militia_ExplosivesExpert", "I_G_Soldier_exp_F"],
-			["militia_Grenadier", "I_G_Soldier_GL_F"],
-			["militia_SquadLeader", "I_G_Soldier_SL_F"],
-			["militia_Engineer", "I_G_engineer_F"],
+			["militia_Unarmed", "I_Survivor_F"],
+			["militia_Rifleman", "I_Soldier_F"],
+			["militia_staticCrew", "I_crew_F"],
+			["militia_Medic", "I_medic_F"],
+			["militia_Sniper", "I_ghillie_ard_F"],
+			["militia_Marksman", "I_Soldier_M_F"],
+			["militia_LAT", "I_Soldier_LAT_F"],
+			["militia_MachineGunner", "I_Soldier_AR_F"],
+			["militia_ExplosivesExpert", "I_Soldier_exp_F"],
+			["militia_Grenadier", "I_Soldier_GL_F"],
+			["militia_SquadLeader", "I_Soldier_SL_F"],
+			["militia_Engineer", "I_engineer_F"],
 			["militia_AT", "I_Soldier_AT_F"],
 			["militia_AA", "I_Soldier_AA_F"],
-			["militia_Petros", "I_G_officer_F"]
+			["militia_Petros", "I_officer_F"]
 		];
 	};
 	case civilian: {

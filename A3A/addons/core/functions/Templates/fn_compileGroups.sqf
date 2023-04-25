@@ -368,7 +368,7 @@ if (_prefix isEqualTo "reb") exitWith {
         , _faction get "unitMG"
         , _faction get "unitRifle"
         , _faction get "unitLAT"
-        , _faction get "unitRifle"
+        , _faction get "unitSniper"
         , _faction get "unitMedic"
     ]];
     _faction set ["groupSquadEng", [
@@ -425,6 +425,20 @@ if (_prefix isEqualTo "reb") exitWith {
         _faction get "unitCrew"
         , _faction get "unitCrew"
         , _faction get "unitEng"
+    ]];
+
+    _faction set ["groupSquadMech", [
+        _faction get "unitSL"
+        , _faction get "unitGL"
+        , _faction get "unitRifle"
+        , _faction get "unitMG"
+        , _faction get "unitRifle"
+        , _faction get "unitLAT"
+        , _faction get "unitSniper"
+        , _faction get "unitMedic"
+        , _faction get "unitCrew"
+        , _faction get "unitCrew"
+        , _faction get "unitCrew"
     ]];
 };
 

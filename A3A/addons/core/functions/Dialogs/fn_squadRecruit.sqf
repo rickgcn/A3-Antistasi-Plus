@@ -62,3 +62,13 @@ _costs = 2*_crewCost + ([FactionGet(reb,"staticMortar")] call A3A_fnc_vehiclePri
 _costHR = 2;
 _costs = 2*_crewCost + ([FactionGet(reb,"vehicleLightArmed")] call A3A_fnc_vehiclePrice);
 (_display displayCtrl 113) ctrlSetTooltip format [localize "STR_dialog_cost_hire",_costs,_costHR, A3A_faction_civ get "currencySymbol"];
+
+_costs = 0; // by rickgcn
+_costHR = 0;
+{_costs = _costs + (server getVariable _x); _costHR = _costHR +1} forEach FactionGet(reb,"groupSquadMech");
+_costs = _costs + ([FactionGet(reb,"vehicleIFV")] call A3A_fnc_vehiclePrice);
+(_display displayCtrl 114) ctrlSetTooltip format [localize "STR_dialog_cost_hire",_costs,_costHR, A3A_faction_civ get "currencySymbol"];
+
+_costHR = 3; // by rickgcn
+_costs = 3*_crewCost + ([FactionGet(reb,"vehicleTank")] call A3A_fnc_vehiclePrice);
+(_display displayCtrl 115) ctrlSetTooltip format [localize "STR_dialog_cost_hire",_costs,_costHR, A3A_faction_civ get "currencySymbol"];

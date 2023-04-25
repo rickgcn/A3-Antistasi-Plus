@@ -13,18 +13,23 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 ["flagTexture", "\A3\Data_F\Flags\Flag_green_CO.paa"] call _fnc_saveToTemplate;
 ["flagMarkerType", "flag_EnochLooters"] call _fnc_saveToTemplate;
 
-["vehicleBasic", "I_G_Quadbike_01_F"] call _fnc_saveToTemplate;
-["vehicleLightUnarmed", "I_G_Offroad_01_F"] call _fnc_saveToTemplate;
-["vehicleLightArmed", "I_G_Offroad_01_armed_F"] call _fnc_saveToTemplate;
-["vehicleTruck", "I_G_Van_01_transport_F"] call _fnc_saveToTemplate;
-["vehicleAT", "I_G_Offroad_01_AT_F"] call _fnc_saveToTemplate;
-private _vehicleAA = "";
+["vehicleBasic", "I_Quadbike_01_F"] call _fnc_saveToTemplate;
+["vehicleLightUnarmed", "I_MRAP_03_F"] call _fnc_saveToTemplate;
+["vehicleLightArmed", "I_MRAP_03_hmg_F"] call _fnc_saveToTemplate;
+["vehicleTruck", "I_Truck_02_transport_F"] call _fnc_saveToTemplate;
+["vehicleAT", "I_LT_01_AT_F"] call _fnc_saveToTemplate;
+["vehicleAA", "I_LT_01_AA_F"] call _fnc_saveToTemplate;
+["vehicleIFV", "I_APC_Wheeled_03_cannon_F"] call _fnc_saveToTemplate;
+["vehicleTank", "I_MBT_03_cannon_F"] call _fnc_saveToTemplate;
 
-["vehicleBoat", "I_C_Boat_Transport_02_F"] call _fnc_saveToTemplate;
-["vehicleRepair", "I_G_Offroad_01_repair_F"] call _fnc_saveToTemplate;
+["vehicleBoat", "I_Boat_Armed_01_minigun_F"] call _fnc_saveToTemplate;
+["vehicleRepair", "I_Truck_02_box_F"] call _fnc_saveToTemplate;
 
-["vehiclePlane", "I_C_Plane_Civil_01_F"] call _fnc_saveToTemplate;
-["vehiclePayloadPlane", "I_C_Plane_Civil_01_F"] call _fnc_saveToTemplate;
+["vehiclePlane", "I_Plane_Fighter_03_dynamicLoadout_F"] call _fnc_saveToTemplate;
+["vehiclePayloadPlane", "B_T_VTOL_01_infantry_F"] call _fnc_saveToTemplate;
+["vehicleAttackHeliB", "B_Heli_Attack_01_dynamicLoadout_F"] call _fnc_saveToTemplate; // by rickgcn
+["vehicleAttackHeliO", "O_Heli_Attack_02_dynamicLoadout_black_F"] call _fnc_saveToTemplate; // by rickgcn
+["vehiclePlaneParaDrop", "B_T_VTOL_01_infantry_F"] call _fnc_saveToTemplate; // by rickgcn
 
 ["vehicleCivCar", "C_Offroad_01_F"] call _fnc_saveToTemplate;
 ["vehicleCivTruck", "C_Truck_02_transport_F"] call _fnc_saveToTemplate;
@@ -33,10 +38,10 @@ private _vehicleAA = "";
 ["vehicleCivBoxSupply", "C_Van_01_box_F"] call _fnc_saveToTemplate;
 
 
-["staticMG", "I_G_HMG_02_high_F"] call _fnc_saveToTemplate;
+["staticMG", "I_HMG_01_high_F"] call _fnc_saveToTemplate;
 ["staticAT", "I_static_AT_F"] call _fnc_saveToTemplate;
-private _staticAA = "I_static_AA_F";
-["staticMortar", "I_G_Mortar_01_F"] call _fnc_saveToTemplate;
+["staticAA", "I_static_AA_F"] call _fnc_saveToTemplate;
+["staticMortar", "I_Mortar_01_F"] call _fnc_saveToTemplate;
 ["staticMortarMagHE", "8Rnd_82mm_Mo_shells"] call _fnc_saveToTemplate;
 ["staticMortarMagSmoke", "8Rnd_82mm_Mo_Smoke_white"] call _fnc_saveToTemplate;
 
@@ -46,12 +51,12 @@ private _staticAA = "I_static_AA_F";
 ["breachingExplosivesAPC", [["DemoCharge_Remote_Mag", 1]]] call _fnc_saveToTemplate;
 ["breachingExplosivesTank", [["SatchelCharge_Remote_Mag", 1], ["DemoCharge_Remote_Mag", 2]]] call _fnc_saveToTemplate;
 
-if (_hasWs) then {
-  _vehicleAA = "I_Tura_Truck_02_aa_lxWS";
-  _staticAA = "I_Tura_ZU23_lxWS";
-};
-["vehicleAA", _vehicleAA] call _fnc_saveToTemplate;
-["staticAA", _staticAA] call _fnc_saveToTemplate;
+// if (_hasWs) then {
+//   _vehicleAA = "I_Tura_Truck_02_aa_lxWS";
+//   _staticAA = "I_Tura_ZU23_lxWS";
+// };
+// ["vehicleAA", _vehicleAA] call _fnc_saveToTemplate;
+// ["staticAA", _staticAA] call _fnc_saveToTemplate;
 
 //////////////////////////////////////
 //       Antistasi Plus Stuff       //
@@ -99,15 +104,396 @@ private _vehiclesBlackMarket = _shopWs + _shopApex + [
 ///////////////////////////
 
 private _initialRebelEquipment = [
-    "hgun_Pistol_heavy_02_F",
-    "hgun_PDW2000_F",
-    "30Rnd_9x21_Mag", "30Rnd_9x21_Red_Mag",
-    "6Rnd_45ACP_Cylinder","MiniGrenade","SmokeShell",
-    ["IEDUrbanSmall_Remote_Mag", 10], ["IEDLandSmall_Remote_Mag", 10], ["IEDUrbanBig_Remote_Mag", 3], ["IEDLandBig_Remote_Mag", 3],
-    "B_FieldPack_oli","B_FieldPack_blk","B_FieldPack_khk",
-    "V_BandollierB_blk","V_BandollierB_cbr","V_BandollierB_rgr","V_BandollierB_khk","V_BandollierB_oli","V_Rangemaster_belt",
-    "Binocular",
-    "acc_flashlight","acc_flashlight_smg_01","acc_flashlight_pistol"
+// BLUFOR Initial Equipment
+// Uniforms
+"U_B_CombatUniform_mcam",
+"U_B_CombatUniform_mcam_tshirt",
+"U_B_CombatUniform_mcam_vest",
+"U_B_GhillieSuit",
+"U_B_HeliPilotCoveralls",
+"U_B_Wetsuit",
+"U_B_CombatUniform_mcam_worn",
+"U_B_CombatUniform_wdl",
+"U_B_CombatUniform_wdl_tshirt",
+"U_B_CombatUniform_wdl_vest",
+"U_B_CombatUniform_sgg",
+"U_B_CombatUniform_sgg_tshirt",
+"U_B_CombatUniform_sgg_vest",
+"U_B_SpecopsUniform_sgg",
+"U_B_PilotCoveralls",
+"U_B_CTRG_1",
+"U_B_CTRG_2",
+"U_B_CTRG_3",
+"U_B_survival_uniform",
+"U_B_FullGhillie_lsh",
+"U_B_FullGhillie_sard",
+"U_B_FullGhillie_ard",
+"U_B_T_Soldier_F",
+"U_B_T_Soldier_AR_F",
+"U_B_T_Soldier_SL_F",
+"U_B_T_Sniper_F",
+"U_B_T_FullGhillie_tna_F",
+"U_B_CTRG_Soldier_F",
+"U_B_CTRG_Soldier_2_F",
+"U_B_CTRG_Soldier_3_F",
+"U_B_CTRG_Soldier_Arid_F",
+"U_B_CTRG_Soldier_2_Arid_F",
+"U_B_CTRG_Soldier_3_Arid_F",
+"U_B_CTRG_Soldier_urb_1_F",
+"U_B_CTRG_Soldier_urb_2_F",
+"U_B_CTRG_Soldier_urb_3_F",
+"U_B_CombatUniform_vest_mcam_wdl_f",
+"U_B_CombatUniform_mcam_wdl_f",
+"U_B_CombatUniform_tshirt_mcam_wdL_f",
+"U_B_CBRN_Suit_01_MTP_F",
+"U_B_CBRN_Suit_01_Tropic_F",
+"U_B_CBRN_Suit_01_Wdl_F",
+// Helmets
+"H_HelmetCrew_B",
+"H_PilotHelmetFighter_B",
+"H_PilotHelmetHeli_B",
+"H_CrewHelmetHeli_B",
+"H_HelmetB",
+"H_HelmetB_camo",
+"H_HelmetB_paint",
+"H_HelmetB_plain_mcamo",
+"H_HelmetB_plain_blk",
+"H_Helmet_Kerry",
+"H_HelmetB_grass",
+"H_HelmetB_snakeskin",
+"H_HelmetB_desert",
+"H_HelmetB_black",
+"H_HelmetB_sand",
+"H_HelmetB_tna_F",
+"H_HelmetB_plain_wdl",
+"H_HelmetB_light",
+"H_HelmetB_light_grass",
+"H_HelmetB_light_snakeskin",
+"H_HelmetB_light_desert",
+"H_HelmetB_light_black",
+"H_HelmetB_light_sand",
+"H_HelmetB_Light_tna_F",
+"H_HelmetB_light_wdl",
+"H_HelmetSpecB",
+"H_HelmetSpecB_paint1",
+"H_HelmetSpecB_paint2",
+"H_HelmetSpecB_blk",
+"H_HelmetSpecB_snakeskin",
+"H_HelmetSpecB_sand",
+"H_HelmetB_Enh_tna_F",
+"H_HelmetSpecB_wdl",
+"H_HelmetB_TI_tna_F",
+"H_HelmetB_TI_arid_F",
+// Vests
+"V_RebreatherB",
+"V_Chestrig_rgr",
+"V_BandollierB_rgr",
+"V_TacVest_oli",
+"V_TacVest_blk",
+"V_PlateCarrier1_rgr",
+"V_PlateCarrier1_blk",
+"V_PlateCarrier1_tna_F",
+"V_PlateCarrier1_rgr_noflag_F",
+"V_PlateCarrier1_wdl",
+"V_PlateCarrier2_rgr",
+"V_PlateCarrier2_blk",
+"V_PlateCarrier2_tna_F",
+"V_PlateCarrier2_rgr_noflag_F",
+"V_PlateCarrier2_wdl",
+"V_PlateCarrierGL_rgr",
+"V_PlateCarrierGL_blk",
+"V_PlateCarrierGL_mtp",
+"V_PlateCarrierGL_tna_F",
+"V_PlateCarrierGL_wdl",
+"V_PlateCarrierSpec_rgr",
+"V_PlateCarrierSpec_blk",
+"V_PlateCarrierSpec_mtp",
+"V_PlateCarrierSpec_tna_F",
+"V_PlateCarrierSpec_wdl",
+"V_PlateCarrier_Kerry",
+"V_PlateCarrierL_CTRG",
+"V_PlateCarrierH_CTRG",
+// Rifles
+"arifle_MX_F",
+"arifle_MXC_F",
+"arifle_MX_GL_F",
+"arifle_MX_SW_F",
+"arifle_MXM_F",
+"arifle_MX_Black_F",
+"arifle_MXC_Black_F",
+"arifle_MX_GL_Black_F",
+"arifle_MX_SW_Black_F",
+"arifle_MXM_Black_F",
+"arifle_MX_khk_F",
+"arifle_MXC_khk_F",
+"arifle_MX_GL_khk_F",
+"arifle_MX_SW_khk_F",
+"arifle_MXM_khk_F",
+"arifle_SDAR_F",
+"arifle_SPAR_01_blk_F",
+"arifle_SPAR_01_khk_F",
+"arifle_SPAR_01_snd_F",
+"arifle_SPAR_01_GL_blk_F",
+"arifle_SPAR_01_GL_khk_F",
+"arifle_SPAR_01_GL_snd_F",
+"arifle_SPAR_02_blk_F",
+"arifle_SPAR_02_khk_F",
+"arifle_SPAR_02_snd_F",
+"arifle_SPAR_03_blk_F",
+"arifle_SPAR_03_khk_F",
+"arifle_SPAR_03_snd_F",
+// Rifle Magizines
+"30Rnd_65x39_caseless_mag",
+"30Rnd_65x39_caseless_khaki_mag",
+"30Rnd_65x39_caseless_black_mag",
+"30Rnd_65x39_caseless_mag_Tracer",
+"30Rnd_65x39_caseless_khaki_mag_Tracer",
+"30Rnd_65x39_caseless_black_mag_Tracer",
+"100Rnd_65x39_caseless_mag",
+"100Rnd_65x39_caseless_khaki_mag",
+"100Rnd_65x39_caseless_black_mag",
+"100Rnd_65x39_caseless_mag_Tracer",
+"100Rnd_65x39_caseless_khaki_mag_tracer",
+"100Rnd_65x39_caseless_black_mag_tracer",
+"20Rnd_556x45_UW_mag",
+"30Rnd_556x45_Stanag",
+"30Rnd_556x45_Stanag_green",
+"30Rnd_556x45_Stanag_red",
+"30Rnd_556x45_Stanag_Tracer_Red",
+"30Rnd_556x45_Stanag_Tracer_Green",
+"30Rnd_556x45_Stanag_Tracer_Yellow",
+"30Rnd_556x45_Stanag_Sand",
+"30Rnd_556x45_Stanag_Sand_green",
+"30Rnd_556x45_Stanag_Sand_red",
+"30Rnd_556x45_Stanag_Sand_Tracer_Red",
+"30Rnd_556x45_Stanag_Sand_Tracer_Green",
+"30Rnd_556x45_Stanag_Sand_Tracer_Yellow",
+"150Rnd_556x45_Drum_Mag_F",
+"150Rnd_556x45_Drum_Sand_Mag_F",
+"150Rnd_556x45_Drum_Sand_Mag_Tracer_F",
+"150Rnd_556x45_Drum_Green_Mag_F",
+"150Rnd_556x45_Drum_Green_Mag_Tracer_F",
+"150Rnd_556x45_Drum_Mag_Tracer_F",
+// Sniper Rifles
+"srifle_DMR_02_F",
+"srifle_DMR_02_camo_F",
+"srifle_DMR_02_sniper_F",
+"srifle_DMR_03_F",
+"srifle_DMR_03_khaki_F",
+"srifle_DMR_03_tan_F",
+"srifle_DMR_03_multicam_F",
+"srifle_DMR_03_woodland_F",
+"srifle_LRR_F",
+"srifle_LRR_camo_F",
+"srifle_LRR_tna_F",
+// Sniper Rifle Magazines
+"10Rnd_338_Mag",
+"20Rnd_762x51_Mag",
+"7Rnd_408_Mag",
+// MachineGuns
+"MMG_02_camo_F",
+"MMG_02_black_F",
+"MMG_02_sand_F",
+// MachineGun Magazines
+"130Rnd_338_Mag",
+// SMGs
+"SMG_01_F",
+// SMG Magazines
+"30Rnd_45ACP_Mag_SMG_01",
+"30Rnd_45ACP_Mag_SMG_01_tracer_green",
+"30Rnd_45ACP_Mag_SMG_01_Tracer_Red",
+"30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow",
+// Handguns
+"hgun_P07_F",
+"hgun_P07_khk_F",
+"hgun_P07_blk_F",
+"hgun_Pistol_heavy_01_F",
+"hgun_Pistol_heavy_01_green_F",
+// Handgun Magazines
+"16Rnd_9x21_Mag",
+"16Rnd_9x21_red_Mag",
+"16Rnd_9x21_green_Mag",
+"16Rnd_9x21_yellow_Mag",
+"30Rnd_9x21_Mag",
+"30Rnd_9x21_Red_Mag",
+"30Rnd_9x21_Yellow_Mag",
+"30Rnd_9x21_Green_Mag",
+"11Rnd_45ACP_Mag",
+// Launchers
+"launch_NLAW_F",
+"launch_B_Titan_F",
+"launch_B_Titan_short_F",
+"launch_B_Titan_tna_F",
+"launch_B_Titan_short_tna_F",
+"launch_B_Titan_olive_F",
+"launch_MRAWS_green_F",
+"launch_MRAWS_sand_F",
+// Launcher Magazines
+"NLAW_F",
+"Titan_AA",
+"Titan_AT",
+"Titan_AP",
+"MRAWS_HEAT_F",
+"MRAWS_HE_F",
+"MRAWS_HEAT55_F",
+// UGL Grenades
+"1Rnd_HE_Grenade_shell",
+"UGL_FlareWhite_F",
+"UGL_FlareGreen_F",
+"UGL_FlareRed_F",
+"UGL_FlareYellow_F",
+"UGL_FlareCIR_F",
+"1Rnd_Smoke_Grenade_shell",
+"1Rnd_SmokeRed_Grenade_shell",
+"1Rnd_SmokeGreen_Grenade_shell",
+"1Rnd_SmokeYellow_Grenade_shell",
+"1Rnd_SmokePurple_Grenade_shell",
+"1Rnd_SmokeBlue_Grenade_shell",
+"1Rnd_SmokeOrange_Grenade_shell",
+"3Rnd_HE_Grenade_shell",
+"3Rnd_UGL_FlareWhite_F",
+"3Rnd_UGL_FlareGreen_F",
+"3Rnd_UGL_FlareRed_F",
+"3Rnd_UGL_FlareYellow_F",
+"3Rnd_UGL_FlareCIR_F",
+"3Rnd_Smoke_Grenade_shell",
+"3Rnd_SmokeRed_Grenade_shell",
+"3Rnd_SmokeGreen_Grenade_shell",
+"3Rnd_SmokeYellow_Grenade_shell",
+"3Rnd_SmokePurple_Grenade_shell",
+"3Rnd_SmokeBlue_Grenade_shell",
+"3Rnd_SmokeOrange_Grenade_shell",
+// Hand Grenades
+"HandGrenade",
+"MiniGrenade",
+"SmokeShell",
+"SmokeShellYellow",
+"SmokeShellGreen",
+"SmokeShellRed",
+"SmokeShellPurple",
+"SmokeShellOrange",
+"SmokeShellBlue",
+"Chemlight_green",
+"Chemlight_red",
+"Chemlight_yellow",
+"Chemlight_blue",
+// Explosives
+"DemoCharge_Remote_Mag",
+"SatchelCharge_Remote_Mag",
+"ATMine_Range_Mag",
+"ClaymoreDirectionalMine_Remote_Mag",
+"APERSMine_Range_Mag",
+"APERSBoundingMine_Range_Mag",
+"SLAMDirectionalMine_Wire_Mag",
+"APERSTripMine_Wire_Mag",
+"APERSMineDispenser_Mag",
+"TrainingMine_Mag",
+// Weapon Accessories
+"acc_pointer_IR",
+"acc_flashlight",
+"acc_flashlight_pistol",
+"optic_MRD",
+"optic_Holosight",
+"optic_Holosight_smg",
+"optic_Hamr",
+"optic_Aco",
+"optic_Aco_smg",
+"optic_SOS",
+"optic_Arco",
+"optic_DMS",
+"optic_AMS",
+"optic_AMS_khk",
+"optic_AMS_snd",
+"optic_LRPS",
+"optic_LRPS_tna_F",
+"optic_ERCO_blk_F",
+"optic_ERCO_khk_F",
+"optic_ERCO_snd_F",
+"optic_NVS",
+"optic_Nightstalker",
+"optic_tws",
+"optic_tws_mg",
+"muzzle_snds_H",
+"muzzle_snds_H_khk_F",
+"muzzle_snds_H_snd_F",
+"muzzle_snds_M",
+"muzzle_snds_m_khk_F",
+"muzzle_snds_m_snd_F",
+"muzzle_snds_L",
+"muzzle_snds_B",
+"muzzle_snds_acp",
+"bipod_01_F_snd",
+"bipod_01_F_blk",
+"bipod_01_F_mtp",
+"bipod_01_F_khk",
+// Items
+"FirstAidKit",
+"Medikit",
+"ToolKit",
+"ItemGPS",
+"I_UavTerminal",
+"ItemRadio",
+"MineDetector",
+"Binocular",
+"Rangefinder",
+"Laserdesignator",
+"Laserbatteries",
+"NVGoggles",
+"NVGoggles_OPFOR",
+"NVGoggles_INDEP",
+"NVGoggles_tna_F",
+"NVGogglesB_blk_F",
+"NVGogglesB_grn_F",
+"NVGogglesB_gry_F",
+"G_Combat",
+"G_B_Diving",
+"G_Tactical_Clear",
+"G_Tactical_Black",
+"G_Balaclava_TI_blk_F",
+"G_Balaclava_TI_tna_F",
+"G_Balaclava_TI_G_blk_F",
+"G_Balaclava_TI_G_tna_F",
+"G_AirPurifyingRespirator_01_F",
+// Backpacks
+"B_Bergen_mcamo_F",
+"B_Bergen_tna_F",
+"B_UAV_06_backpack_F",
+"B_UAV_06_medical_backpack_F",
+"B_UAV_01_backpack_F",
+"B_UGV_02_Demining_backpack_F",
+"B_UGV_02_Science_backpack_F",
+"B_Parachute",
+"B_Carryall_mcamo",
+"B_Carryall_oli",
+"B_Carryall_wdl_F",
+"B_TacticalPack_mcamo",
+"B_TacticalPack_rgr",
+"B_Mortar_01_support_F",
+"B_Mortar_01_weapon_F",
+"B_HMG_01_support_F",
+"B_HMG_01_support_high_F",
+"B_HMG_01_weapon_F",
+"B_HMG_01_high_weapon_F",
+"B_GMG_01_weapon_F",
+"B_GMG_01_high_weapon_F",
+"B_GMG_01_A_weapon_F",
+"B_HMG_01_A_weapon_F",
+"B_RadioBag_01_wdl_F",
+"B_RadioBag_01_mtp_F",
+"B_RadioBag_01_tropic_F",
+"B_AssaultPack_rgr",
+"B_AssaultPack_mcamo",
+"B_AssaultPack_Kerry",
+"B_AssaultPack_tna_F",
+"B_AssaultPack_wdl_F",
+"B_Kitbag_rgr",
+"B_Kitbag_mcamo",
+"B_Static_Designator_01_weapon_F",
+"B_W_Static_Designator_01_weapon_F",
+"B_AA_01_weapon_F",
+"B_AT_01_weapon_F",
+// Self Revive Kit
+"A3AP_SelfReviveKit"
 ];
 
 if (_hasLawsOfWar) then {
@@ -137,25 +523,25 @@ if (_hasLawsOfWar) then {
 
 _initialRebelEquipment append _civilianBackpacks;
 
-if (_hasContact) then {
-    _initialRebelEquipment append [
-        "sgun_HunterShotgun_01_F",
-        "sgun_HunterShotgun_01_sawedoff_F",
-        "2Rnd_12Gauge_Pellets",
-        "2Rnd_12Gauge_Slug"
-    ];
-};
+// if (_hasContact) then {
+//     _initialRebelEquipment append [
+//         "sgun_HunterShotgun_01_F",
+//         "sgun_HunterShotgun_01_sawedoff_F",
+//         "2Rnd_12Gauge_Pellets",
+//         "2Rnd_12Gauge_Slug"
+//     ];
+// };
 
-if (_hasApex) then {
-    _initialRebelEquipment append [
-        "hgun_Pistol_01_F",
-        "10Rnd_9x21_Mag",
-        ["launch_RPG7_F", 3], 
-        ["RPG7_F", 9]
-    ];
-} else {
-    _initialRebelEquipment append [["launch_RPG32_F", 2], ["RPG32_F", 6]];
-};
+// if (_hasApex) then {
+//     _initialRebelEquipment append [
+//         "hgun_Pistol_01_F",
+//         "10Rnd_9x21_Mag",
+//         ["launch_RPG7_F", 3], 
+//         ["RPG7_F", 9]
+//     ];
+// } else {
+//     _initialRebelEquipment append [["launch_RPG32_F", 2], ["RPG32_F", 6]];
+// };
 
 if (A3A_hasTFAR) then {_initialRebelEquipment append ["tf_microdagr","tf_anprc154"]};
 if (A3A_hasTFAR && startWithLongRangeRadio) then {_initialRebelEquipment append ["tf_anprc155","tf_anprc155_coyote"]};
@@ -164,14 +550,48 @@ if (A3A_hasTFARBeta && startWithLongRangeRadio) then {_initialRebelEquipment app
 ["initialRebelEquipment", _initialRebelEquipment] call _fnc_saveToTemplate;
 
 private _rebUniforms = [
-    "U_IG_Guerrilla_6_1",
-    "U_BG_Guerilla2_1",
-    "U_IG_Guerilla2_2",
-    "U_IG_Guerilla2_3",
-    "U_I_C_Soldier_Para_5_F",
-    "U_I_C_Soldier_Para_3_F",
-    "U_I_C_Soldier_Para_2_F",
-    "U_I_C_Soldier_Camo_F"
+    "U_B_CombatUniform_mcam",
+    "U_B_CombatUniform_mcam_tshirt",
+    "U_B_CombatUniform_mcam_vest",
+    "U_B_GhillieSuit",
+    "U_B_HeliPilotCoveralls",
+    "U_B_Wetsuit",
+    "U_B_CombatUniform_mcam_worn",
+    "U_B_CombatUniform_wdl",
+    "U_B_CombatUniform_wdl_tshirt",
+    "U_B_CombatUniform_wdl_vest",
+    "U_B_CombatUniform_sgg",
+    "U_B_CombatUniform_sgg_tshirt",
+    "U_B_CombatUniform_sgg_vest",
+    "U_B_SpecopsUniform_sgg",
+    "U_B_PilotCoveralls",
+    "U_B_CTRG_1",
+    "U_B_CTRG_2",
+    "U_B_CTRG_3",
+    "U_B_survival_uniform",
+    "U_B_FullGhillie_lsh",
+    "U_B_FullGhillie_sard",
+    "U_B_FullGhillie_ard",
+    "U_B_T_Soldier_F",
+    "U_B_T_Soldier_AR_F",
+    "U_B_T_Soldier_SL_F",
+    "U_B_T_Sniper_F",
+    "U_B_T_FullGhillie_tna_F",
+    "U_B_CTRG_Soldier_F",
+    "U_B_CTRG_Soldier_2_F",
+    "U_B_CTRG_Soldier_3_F",
+    "U_B_CTRG_Soldier_Arid_F",
+    "U_B_CTRG_Soldier_2_Arid_F",
+    "U_B_CTRG_Soldier_3_Arid_F",
+    "U_B_CTRG_Soldier_urb_1_F",
+    "U_B_CTRG_Soldier_urb_2_F",
+    "U_B_CTRG_Soldier_urb_3_F",
+    "U_B_CombatUniform_vest_mcam_wdl_f",
+    "U_B_CombatUniform_mcam_wdl_f",
+    "U_B_CombatUniform_tshirt_mcam_wdL_f",
+    "U_B_CBRN_Suit_01_MTP_F",
+    "U_B_CBRN_Suit_01_Tropic_F",
+    "U_B_CBRN_Suit_01_Wdl_F"
 ];
 
 private _dlcUniforms = [];
@@ -190,11 +610,41 @@ if (_hasContact) then {
 ["uniforms", _rebUniforms + _dlcUniforms] call _fnc_saveToTemplate;
 
 ["headgear", [
-    "H_Cap_oli",
-    "H_Cap_grn",
-    "H_Booniehat_oli",
-    "H_Bandanna_sgg",
-    "H_Bandanna_khk"
+    "H_HelmetCrew_B",
+    "H_PilotHelmetFighter_B",
+    "H_PilotHelmetHeli_B",
+    "H_CrewHelmetHeli_B",
+    "H_HelmetB",
+    "H_HelmetB_camo",
+    "H_HelmetB_paint",
+    "H_HelmetB_plain_mcamo",
+    "H_HelmetB_plain_blk",
+    "H_Helmet_Kerry",
+    "H_HelmetB_grass",
+    "H_HelmetB_snakeskin",
+    "H_HelmetB_desert",
+    "H_HelmetB_black",
+    "H_HelmetB_sand",
+    "H_HelmetB_tna_F",
+    "H_HelmetB_plain_wdl",
+    "H_HelmetB_light",
+    "H_HelmetB_light_grass",
+    "H_HelmetB_light_snakeskin",
+    "H_HelmetB_light_desert",
+    "H_HelmetB_light_black",
+    "H_HelmetB_light_sand",
+    "H_HelmetB_Light_tna_F",
+    "H_HelmetB_light_wdl",
+    "H_HelmetSpecB",
+    "H_HelmetSpecB_paint1",
+    "H_HelmetSpecB_paint2",
+    "H_HelmetSpecB_blk",
+    "H_HelmetSpecB_snakeskin",
+    "H_HelmetSpecB_sand",
+    "H_HelmetB_Enh_tna_F",
+    "H_HelmetSpecB_wdl",
+    "H_HelmetB_TI_tna_F",
+    "H_HelmetB_TI_arid_F"
 ]] call _fnc_saveToTemplate;
 
 /////////////////////

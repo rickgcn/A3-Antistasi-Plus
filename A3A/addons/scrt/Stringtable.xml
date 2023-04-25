@@ -5610,6 +5610,14 @@
                 <Chinesesimp>招募迫击炮卡车小队</Chinesesimp>
                 <Korean>박격포반 모집</Korean>
             </Key>
+            <Key ID="STR_antistasi_dialogs_mech_team_title">
+                <Original>Recruit Mech Team</Original>
+                <Chinesesimp>招募机械化小队</Chinesesimp>
+            </Key>
+            <Key ID="STR_antistasi_dialogs_tank_title">
+                <Original>Recruit Tank Team</Original>
+                <Chinesesimp>招募坦克小队</Chinesesimp>
+            </Key>
             <Key ID="STR_antistasi_dialogs_trenches">
                 <Original>Trenches, small covers</Original>
                 <Russian>Траншеи, небольшие укрытия</Russian>

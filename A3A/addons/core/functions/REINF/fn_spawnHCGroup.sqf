@@ -85,7 +85,7 @@ switch _special do {
         _cost = _cost + ([_staticType] call A3A_fnc_vehiclePrice);
     };
 
-    //vehicle squad
+    //vehicle squad, and mech & tank squad
     case "BuildAA": {
         private _static = ((attachedObjects _vehicle) select {typeOf _x == FactionGet(reb,"staticAA")})#0;
         (_units # (_countUnits -1)) moveInDriver _vehicle;
@@ -99,6 +99,22 @@ switch _special do {
         (_units # _countUnits) moveInGunner _vehicle;
         call _initVeh;
         _vehicle allowCrewInImmobile true;
+    };
+    case "Tank": {
+        (_units # (_countUnits -2)) moveInCommander _vehicle;
+        (_units # (_countUnits -1)) moveInDriver _vehicle;
+        (_units # _countUnits) moveInGunner _vehicle;
+        call _initVeh;
+        _vehicle allowCrewInImmobile true;
+        petros directSay "SentGenBaseUnlockVehicle";
+    };
+    case "MechSquad": {
+        (_units # (_countUnits -2)) moveInCommander _vehicle;
+        (_units # (_countUnits -1)) moveInDriver _vehicle;
+        (_units # _countUnits) moveInGunner _vehicle;
+        call _initVeh;
+        _vehicle allowCrewInImmobile true;
+        petros directSay "SentGenBaseUnlockVehicle";
     };
 
     //inf squad
