@@ -77,8 +77,9 @@ if (_veh isKindOf "Car" or{ _veh isKindOf "Tank"}) then {
 				if (_this select 1 != "driver") exitWith {};
 				_unit = _this select 2;
 				if (!isPlayer _unit and {_unit getVariable ["spawner",false] and {side group _unit == teamPlayer}}) then {
-					moveOut _unit;
-					[localize "STR_A3A_Create_AIVEHINIT_header", localize "STR_A3A_Create_AIVEHINIT_only_humans"] call A3A_fnc_customHint;
+					// by rickgcn, enable AI driving helicopter and fighter
+					// moveOut _unit;
+					// [localize "STR_A3A_Create_AIVEHINIT_header", localize "STR_A3A_Create_AIVEHINIT_only_humans"] call A3A_fnc_customHint;
 				};
 			}];
 
