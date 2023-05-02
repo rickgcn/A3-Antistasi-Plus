@@ -81,10 +81,10 @@ if (_typeCrew in _garrison) then {
 	_garrison deleteAt (_garrison find _typeCrew);
 };
 
-// Move riflemen into saved static weapons in area
+// Move riflemen into saved static weapons in area, or UAV AI, by rickgcn
 {
 	if !(isNil {_x getVariable "lockedForAI"}) then { continue };
-	private _index = _garrison findIf {_x isEqualTo FactionGet(reb,"unitRifle")};
+	private _index = _garrison findIf {_x isEqualTo FactionGet(reb,"unitRifle") or _x isEqualTo FactionGet(reb,"unitUAVAI")};
 	if (_index == -1) exitWith {};
 	private _unit = objNull;
 	if (typeOf _x in FactionGet(all,"staticMortars")) then {

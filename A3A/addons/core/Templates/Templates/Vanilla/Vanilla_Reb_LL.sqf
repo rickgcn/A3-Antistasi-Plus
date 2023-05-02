@@ -730,7 +730,8 @@ private _unitTypes = [
     ["MachineGunner", _riflemanTemplate],
     ["Marksman", _riflemanTemplate],
     ["Sniper", _riflemanTemplate],
-    ["Unarmed", _riflemanTemplate]
+    ["Unarmed", _riflemanTemplate],
+    ["UAVAI", _riflemanTemplate] // by rickgcn
 ];
 
 [_prefix, _unitTypes, _loadoutData] call _fnc_generateAndSaveUnitsToTemplate;

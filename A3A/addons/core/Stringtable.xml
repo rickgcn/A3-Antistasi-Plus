@@ -431,6 +431,10 @@
                 <Spanish>Reclutar AT</Spanish>
                 <Polish>Rekrutuj Celowniczego PPANC</Polish>
             </Key>
+            <Key ID="STR_antistasi_dialogs_garrison_spawn_uavai_text">
+                <Original>Recruit UAV AI</Original>
+                <Chinesesimp>招募无人机AI</Chinesesimp>
+            </Key>
         </Container>
         <Container name="dialog_build_minefield">
             <Key ID="STR_antistasi_dialogs_minefield_frame_text">

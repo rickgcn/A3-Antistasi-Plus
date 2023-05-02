@@ -84,6 +84,15 @@ class garrisonRecruit: SimpleMenuBig
 			y = 0.486 * safezoneH + safezoneY;
 			action = "[A3A_faction_reb get 'unitSniper'] spawn A3A_fnc_garrisonAdd";
 		};
+
+		class uavAIButton: SimpleButton
+		{
+			idc = 127;
+			text = $STR_antistasi_dialogs_garrison_spawn_uavai_text;
+			x = 0.477 * safezoneW + safezoneX;
+			y = 0.584 * safezoneH + safezoneY;
+			action = "[A3A_faction_reb get 'unitUAVAI'] spawn A3A_fnc_garrisonAdd";
+		};
 	};
 };
 

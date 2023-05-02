@@ -357,6 +357,7 @@ if (_prefix isEqualTo "reb") exitWith {
     _faction set ["unitRifle", unit(militia, "Rifleman")];
     _faction set ["unitSL", unit(militia, "SquadLeader")];
     _faction set ["unitEng", unit(militia, "Engineer")];
+    _faction set ["unitUAVAI", unit(militia, "UAVAI")]; // by rickgcn
 
     //groups
     _faction set ["groupMedium", [_faction get "unitSL", _faction get "unitGL", _faction get "unitMG", _faction get "unitRifle"]];

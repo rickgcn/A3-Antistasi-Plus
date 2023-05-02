@@ -170,7 +170,8 @@ private _unitClassMap = switch (_side) do {
 			["militia_Engineer", "I_engineer_F"],
 			["militia_AT", "I_Soldier_AT_F"],
 			["militia_AA", "I_Soldier_AA_F"],
-			["militia_Petros", "I_officer_F"]
+			["militia_Petros", "I_officer_F"],
+			["militia_UAVAI", "I_UAV_AI_F"] // by rickgcn
 		];
 	};
 	case civilian: {
