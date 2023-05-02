@@ -7,7 +7,7 @@
 *.bat
 AntistasiBuilder.cfg
 
-build/@A3A-Plus
+build/
 
 #Ignore mission files that have been copied to A3-Antistasi
 A3-Antistasi/description.ext
