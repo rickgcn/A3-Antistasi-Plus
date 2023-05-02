@@ -29,7 +29,7 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 ["vehiclePayloadPlane", "I_Plane_Fighter_03_CAS_F"] call _fnc_saveToTemplate;
 ["vehicleAttackHeliB", "B_Heli_Attack_01_F"] call _fnc_saveToTemplate; // by rickgcn
 ["vehicleAttackHeliO", "O_Heli_Attack_02_F"] call _fnc_saveToTemplate; // by rickgcn
-["vehiclePlaneParaDrop", "B_T_VTOL_01_infantry_F"] call _fnc_saveToTemplate; // by rickgcn
+["vehiclePlaneParadrop", "B_T_VTOL_01_infantry_F"] call _fnc_saveToTemplate; // by rickgcn
 
 ["vehicleCivCar", "C_Offroad_01_F"] call _fnc_saveToTemplate;
 ["vehicleCivTruck", "C_Truck_02_transport_F"] call _fnc_saveToTemplate;
